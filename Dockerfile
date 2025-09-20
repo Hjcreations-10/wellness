@@ -17,8 +17,5 @@ RUN python -m spacy download en_core_web_sm
 # Copy the rest of your application code
 COPY . .
 
-# Cloud Run sets the PORT env automatically
 ENV PORT=8080
-
-# Run Streamlit on the correct port & address
-CMD ["streamlit", "run", "app.py", "--server.port=${PORT}", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
+CMD ["sh", "-c", "streamlit run app.py --server.port=$PORT --server.enableCORS=false --server.enableXsrfProtection=false"]
