@@ -1,8 +1,9 @@
 # Use a slim Python image for a smaller container
+# Use a slim Python image for a smaller container
 FROM python:3.11-slim
 
 # Install system dependencies, including FFmpeg
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /app
@@ -17,8 +18,8 @@ RUN python -m spacy download en_core_web_sm
 # Copy the rest of your application code
 COPY . .
 
-# Set an environment variable for Streamlit to run on any port
-ENV PORT 8501
+# Expose the port Cloud Run expects
+EXPOSE 8080
 
 # The command to run your app
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
+CMD ["streamlit", "run", "app.py", "--server.port=${PORT}", "--server.address=0.0.0.0", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
