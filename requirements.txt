@@ -1,0 +1,7 @@
+streamlit
+google-cloud-speech
+google-cloud-texttospeech
+streamlit-mic-recorder
+Pillow
+textblob
+spacy
