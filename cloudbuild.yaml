@@ -5,3 +5,10 @@ images:
 - 'gcr.io/$PROJECT_ID/my-app'
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        pip install -r requirements.txt
+        streamlit run app.py --server.port=8080 --server.address=0.0.0.0
