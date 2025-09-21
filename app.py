@@ -328,9 +328,4 @@ pages = {
 pages[st.session_state.page]()
 
 
-import os
-import streamlit as st
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    st.run(app='app.py', server_port=port, server_address="0.0.0.0")
