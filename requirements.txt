@@ -1,7 +1,9 @@
 streamlit
 google-cloud-speech
+google-cloud-dialogflow
 google-cloud-texttospeech
-streamlit-mic-recorder
+google-cloud-storage
+vertexai
 Pillow
-textblob
 spacy
+streamlit-mic-recorder
