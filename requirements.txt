@@ -3,7 +3,9 @@ google-cloud-speech
 google-cloud-dialogflow
 google-cloud-texttospeech
 google-cloud-storage
-vertexai
+
 Pillow
 spacy
 streamlit-mic-recorder
+vertexai
+google-cloud-aiplatform
