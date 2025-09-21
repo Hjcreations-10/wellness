@@ -388,15 +388,15 @@ def home_page():
             st.session_state.page = "train"
             st.experimental_rerun()
 
-   with col2:
-    if st.button("🚌 Bus"):
-        st.session_state.page = "bus"
-        st.rerun()
+    with col2:
+        if st.button("🚌 Bus"):
+            st.session_state.page = "bus"
+            st.experimental_rerun()
 
-  with col3:
-    if st.button("🚗 Car"):
-        st.session_state.page = "car"
-        st.rerun()
+    with col3:
+        if st.button("🚗 Car"):
+            st.session_state.page = "car"
+            st.experimental_rerun()
 
 # --- ROUTER ---
 pages = {
