@@ -167,12 +167,12 @@ def reflection_box():
             reflection_text = transcribed_text
             st.session_state.user_input = reflection_text
             st.session_state.user_original = reflection_text
-            st.experimental_rerun()
+            st.rerun()
 
     if typed_text != st.session_state.user_input and typed_text:
         st.session_state.user_input = typed_text
         st.session_state.user_original = typed_text
-        st.experimental_rerun()
+        st.rerun()
 
 def chatbot_in_game():
     """The main chatbot interface for the game pages."""
@@ -200,7 +200,7 @@ def chatbot_in_game():
                 "text": user_input, "sentiment": sentiment
             })
             st.session_state.user_input = ""
-            st.experimental_rerun()
+            st.rerun()
             
     if st.session_state.moods:
         st.markdown("### Mood Tracker")
@@ -211,7 +211,7 @@ def chatbot_in_game():
     if st.session_state.credits >= 3:
         if st.button("➡ Continue to Mansion"):
             st.session_state.page = "mansion"
-            st.experimental_rerun()
+            st.rerun()
     else:
         st.info(f"✨ Earn at least 3 credits from games to unlock your Mansion story. (Current: {st.session_state.credits})")
 
@@ -233,7 +233,7 @@ def train_game():
         score = sum(1 for i, obj in enumerate(hidden_objects) if st.session_state[f"train_guess_{i}"].strip().lower() == obj)
         st.session_state.credits += score
         st.success(f"Found {score}/3 objects. Total credits: {st.session_state.credits}")
-        st.experimental_rerun()
+        st.rerun()
     chatbot_in_game()
 
 def car_game():
@@ -252,7 +252,7 @@ def car_game():
         else:
             st.error(f"Wrong — the answer was: {answer}")
         st.info(f"Credits: {st.session_state.credits}")
-        st.experimental_rerun()
+        st.rerun()
     chatbot_in_game()
 
 def bus_game():
@@ -274,7 +274,7 @@ def bus_game():
         score = sum(1 for i, word in enumerate(words.keys()) if st.session_state[f"bus_guess_{i}"].strip().lower() == word)
         st.session_state.credits += score
         st.success(f"Found {score}/{len(words)} — Total credits: {st.session_state.credits}")
-        st.experimental_rerun()
+        st.rerun()
     chatbot_in_game()
 
 # --- MANSION PAGE ---
@@ -295,7 +295,7 @@ def mansion_page():
                 os.remove(image_path)
     if st.button("🔁 Restart Journey"):
         st.session_state.clear()
-        st.experimental_rerun()
+        st.rerun()
 
 # --- HOME PAGE ---
 def home_page():
@@ -307,15 +307,18 @@ def home_page():
     with col1:
         if st.button("🚆 Train"):
             st.session_state.page = "train"
-            st.experimental_rerun()
+            st.rerun()
+
     with col2:
         if st.button("🚌 Bus"):
             st.session_state.page = "bus"
-            st.experimental_rerun()
+            st.rerun()
+
     with col3:
         if st.button("🚗 Car"):
             st.session_state.page = "car"
-            st.experimental_rerun()
+            st.rerun()
+
 
 # --- ROUTER ---
 pages = {
